@@ -38,6 +38,8 @@ export class CollectionDetailsComponent implements AfterViewInit,OnChanges  {
       this.searchWord = this.searchWord.trim();
       this.searchWord = this.searchWord.toLowerCase();
       this.dataSource.filter = this.searchWord;
+    } else {
+      this.dataSource.filter = this.searchWord;
     }
 }
   
