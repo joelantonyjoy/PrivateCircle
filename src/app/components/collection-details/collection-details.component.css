@@ -1,0 +1,161 @@
+.collection-container{
+  margin: 0;
+  padding: 0;
+}
+
+.collection-table-container{
+  padding:0;
+  width: 80%; 
+  position: relative;
+  max-height: 90vh;
+  overflow: auto;
+}
+
+.collection-table{
+  width: 100%;
+  overflow-y: scroll;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+  
+}
+.collection-table th{
+  font-size: 14px!important;
+}
+
+.header-date{
+  margin:0px 20px 0px 10px;
+}
+
+.cell-date{
+  margin:0px 20px 0px 8px;
+  color: #c2c2c2;
+  font-size: 13px;
+}
+
+.cell-no-date{
+  margin:0px 16px;
+  color:#353647;
+  opacity: 0.8;
+  font-size: 18px;
+}
+
+.collection-table th:nth-child(2){
+  width:45%;
+}
+
+.cell-list-name{
+  font-size: 16px!important;
+  font-weight: 600;
+}
+
+.header-entities{
+  margin:0px 0px 0px 40px;
+}
+
+.collection-table td:nth-child(3){
+  text-align: right;
+  font-weight: 400;
+  font-size:12px;
+}
+
+.header-actions{
+  margin:0px 32px;
+}
+
+.cell-action-icons{
+  padding-top: 4px;
+  color:rgb(167, 167, 158)
+}
+
+.action-icons{
+  margin-right: 16px!important;
+}
+
+.action-icons:nth-child(1){
+  margin-left:32px;
+}
+
+.action-svg{
+  overflow: hidden;
+  height: 18px;
+  vertical-align: baseline;
+}
+
+.detail-btn{
+  float: right;
+  color:#002b42;
+  margin-right: 24px;
+  font-size: 12px;
+  font-weight: 400;
+  padding: 6px 16px;
+  cursor: pointer;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                      supported by Chrome, Edge, Opera and Firefox */
+  text-decoration: none;
+  border-bottom: 3px solid #ffffff;
+}
+
+.mat-row.highlighted .detail-btn{
+  background: #ffffff;
+  color: #002b42;
+  border-bottom: 3px solid #002b42;
+}
+
+.mat-row.highlighted mat-icon{
+  color: black;
+}
+
+.mat-row.highlighted {
+  background: #f5f5f5;
+}
+
+mat-cell.mat-cell, mat-header-cell.mat-header-cell {
+  overflow: visible; 
+}
+  
+tr.mat-row, tr.mat-footer-row {
+  height: 60px;
+}
+
+.description-container{
+  padding:0;
+  width: 20%;
+  position: relative;
+  max-height: 90vh;
+  overflow: auto;
+}
+
+.description-header{
+  background: #f5f5f5!important;
+  padding: 16px;
+  font-size: 12px;
+  color: black;
+  text-align: left;
+  font-weight: 200;
+  margin: 16px 16px 24px 20px;
+}
+
+.description-header a{
+  font-weight: 600;
+  margin-left: 8px;
+  color: #02466b;
+}
+
+.description-header + ul{
+  padding: 0px 0px 0px 24px;
+  font-size: 12px;
+  list-style: none;
+}
+
+.description-header + ul li{
+  color: #35577e;
+  margin-bottom: 8px;
+}
+

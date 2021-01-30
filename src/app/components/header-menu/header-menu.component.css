@@ -1,0 +1,37 @@
+.navbar{
+padding:16px;
+margin:0;
+background: #f5f5f5!important;
+}
+.menu-icons{
+    font-size: 18px;
+    display: inline-flex;
+    vertical-align: top;
+}
+.nav-item{
+    margin-right: 16px;
+    user-select: none;
+}
+
+.active a:nth-child(1){
+    background-color: #002b42;
+    color: white;
+}
+.nav-item a{
+    padding: 10px 16px;
+    letter-spacing: 2px;
+    font-weight: 400;
+    font-size: 12px;
+    color:rgb(70, 66, 66);
+}
+.form-inline{
+      width: 42.5%;
+}
+.form-inline input{
+      width: 100%;
+}
+.form-inline input::placeholder { 
+    color: grey;
+    opacity: 0.5; 
+    font-size: 14px;
+}

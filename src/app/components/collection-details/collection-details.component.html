@@ -1,0 +1,56 @@
+<div class="row collection-container">
+
+    <div class="collection-table-container">
+      <table mat-table [dataSource]="dataSource" multiTemplateDataRows matSort class="collection-table mat-elevation-z8">
+  
+        <!-- Date Column -->
+        <ng-container   matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> <span class="header-date">Date</span> </th>
+          <td mat-cell *matCellDef="let element"> <span class="cell-date" *ngIf="element.actions">{{element.date}} </span>
+          <mat-icon class="cell-no-date" *ngIf="!element.actions">all_out</mat-icon>
+          </td>
+        </ng-container>
+      
+        <!-- List Name Column -->
+        <ng-container matColumnDef="listName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> List Name </th>
+          <td mat-cell *matCellDef="let element"> <span class="cell-list-name" [style.color]="!element.actions? '#5ec1f7' : black">{{element.listName}} </span></td>
+        </ng-container>
+      
+        <!-- No. of Entities Column -->
+        <ng-container matColumnDef="noOfEntities">
+          <th style="text-align:end;" mat-header-cell *matHeaderCellDef mat-sort-header> <span class="header-entities">No. of Entities</span> </th>
+          <td mat-cell *matCellDef="let element"> <span>{{element.noOfEntities}}</span> </td>
+        </ng-container>
+      
+        <!-- Actions Column -->
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> <span class="header-actions">Actions</span></th>
+          <td class="cell-action-icons" mat-cell *matCellDef="let element">
+            <mat-icon class="action-icons">
+              <svg class="action-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M5,5H18A3,3 0 0,1 21,8V17A3,3 0 0,1 18,20H5A3,3 0 0,1 2,17V8A3,3 0 0,1 5,5M5,6C4.5,6 4.06,6.17 3.72,6.47L11.5,11.5L19.28,6.47C18.94,6.17 18.5,6 18,6H5M11.5,12.71L3.13,7.28C3.05,7.5 3,7.75 3,8V17A2,2 0 0,0 5,19H18A2,2 0 0,0 20,17V8C20,7.75 19.95,7.5 19.87,7.28L11.5,12.71Z"/></svg></mat-icon>
+            <mat-icon class="action-icons" *ngIf="element.actions">
+              <svg class="action-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18,16.08C17.24,16.08 16.56,16.38 16.04,16.85L8.91,12.7C8.96,12.47 9,12.24 9,12C9,11.76 8.96,11.53 8.91,11.3L15.96,7.19C16.5,7.69 17.21,8 18,8A3,3 0 0,0 21,5A3,3 0 0,0 18,2A3,3 0 0,0 15,5C15,5.24 15.04,5.47 15.09,5.7L8.04,9.81C7.5,9.31 6.79,9 6,9A3,3 0 0,0 3,12A3,3 0 0,0 6,15C6.79,15 7.5,14.69 8.04,14.19L15.16,18.34C15.11,18.55 15.08,18.77 15.08,19C15.08,20.61 16.39,21.91 18,21.91C19.61,21.91 20.92,20.61 20.92,19A2.92,2.92 0 0,0 18,16.08Z"/></svg>
+            </mat-icon>
+            <mat-icon style="margin-right: 12px!important;" class="action-icons" *ngIf="element.actions">
+              <svg class="action-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19.71,8.04L17.37,10.37L13.62,6.62L15.96,4.29C16.35,3.9 17,3.9 17.37,4.29L19.71,6.63C20.1,7 20.1,7.65 19.71,8.04M3,17.25L13.06,7.18L16.81,10.93L6.75,21H3V17.25M16.62,5.04L15.08,6.58L17.42,8.92L18.96,7.38L16.62,5.04M15.36,11L13,8.64L4,17.66V20H6.34L15.36,11Z"/></svg>
+            </mat-icon>
+            <mat-icon class="action-icons" *ngIf="element.actions">
+              <svg class="action-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18,19A3,3 0 0,1 15,22H8A3,3 0 0,1 5,19V7H4V4H8.5L9.5,3H13.5L14.5,4H19V7H18V19M6,7V19A2,2 0 0,0 8,21H15A2,2 0 0,0 17,19V7H6M18,6V5H14L13,4H10L9,5H5V6H18M8,9H9V19H8V9M14,9H15V19H14V9Z"/></svg>
+            </mat-icon>
+            <a (click)="showDesc(element)" class="detail-btn">Details</a>
+          </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns sticky: true"></tr>
+        <tr  mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row);reset(row)" [ngClass]="{hovered: row.hovered, highlighted: selection.isSelected(row)}"
+        (mouseover)="row.hovered = true" (mouseout)="row.hovered = false">"></tr>
+      </table>
+    </div>
+    <div class="description-container">
+      <p class="description-header">No description yet <a>+ Add Description</a></p>
+      <ul>
+        <li *ngFor="let description of selectedDescriptions">{{description}}</li>
+      </ul>
+    </div>
+  </div>
