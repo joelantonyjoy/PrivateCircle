@@ -5,7 +5,7 @@ import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 
 import {CollectedData} from '../../models/CollectedData';
-import {COLLECTED_DATA, DESCRIPTIONS} from '../../mockData/MockData';
+import {CollectionService} from '../../services/collection.service';
 
 @Component({
   selector: 'app-collection-details',
@@ -15,18 +15,20 @@ import {COLLECTED_DATA, DESCRIPTIONS} from '../../mockData/MockData';
 export class CollectionDetailsComponent implements AfterViewInit,OnChanges  {
   @Input() searchWord: string;
   displayedColumns: string[] = ['date', 'listName', 'noOfEntities', 'actions'];
-  public dataSource = new MatTableDataSource(COLLECTED_DATA);
+  dataSource: MatTableDataSource<CollectedData> = new MatTableDataSource();
   selection = new SelectionModel<CollectedData>(false, []);
   currentRow: CollectedData;
   @ViewChild(MatSort) sort: MatSort;
   selectedDescriptions: String[];
+
+  constructor(private collectionService:CollectionService){}
 
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
     this.dataSource.filterPredicate = (data: CollectedData, filter: string) => {
       return data.listName.toLowerCase().indexOf(filter) !== -1;
      };
-     this.populateDescriptions();
+     this.dataSource = new MatTableDataSource(this.collectionService.getCollections());
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -52,20 +54,6 @@ reset(row){
 showDesc(row){
   this.currentRow = row;
   this.selectedDescriptions = this.currentRow.descriptions;
-}
-
-populateDescriptions(){
-  for( var e of COLLECTED_DATA){
-  e.descriptions = this.shuffleArray(DESCRIPTIONS).slice(0,e.noOfEntities);
-  }
-}
-
-shuffleArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-  return array;
 }
 
 }
