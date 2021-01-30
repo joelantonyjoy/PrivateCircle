@@ -34,9 +34,11 @@ export class CollectionDetailsComponent implements AfterViewInit,OnChanges  {
   }
 
   searchThis() {
-    this.searchWord = this.searchWord.trim(); // Remove whitespace
-    this.searchWord = this.searchWord.toLowerCase(); // MatTableDataSource defaults to lowercase matches
-    this.dataSource.filter = this.searchWord;
+    if(this.searchWord){
+      this.searchWord = this.searchWord.trim();
+      this.searchWord = this.searchWord.toLowerCase();
+      this.dataSource.filter = this.searchWord;
+    }
 }
   
 reset(row){
@@ -57,10 +59,11 @@ populateDescriptions(){
 }
 
 shuffleArray(array) {
-for (let i = array.length - 1; i > 0; i--) {
+  for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
 }
-return array;
-}
+
 }
