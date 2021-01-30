@@ -1,5 +1,5 @@
 import { SelectionModel } from '@angular/cdk/collections';
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
 
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
@@ -12,7 +12,8 @@ import {COLLECTED_DATA, DESCRIPTIONS} from '../../mockData/MockData';
   templateUrl: './collection-details.component.html',
   styleUrls: ['./collection-details.component.css']
 })
-export class CollectionDetailsComponent implements AfterViewInit {
+export class CollectionDetailsComponent implements AfterViewInit,OnChanges  {
+  @Input() searchWord: string;
   displayedColumns: string[] = ['date', 'listName', 'noOfEntities', 'actions'];
   public dataSource = new MatTableDataSource(COLLECTED_DATA);
   selection = new SelectionModel<CollectedData>(false, []);
@@ -27,6 +28,16 @@ export class CollectionDetailsComponent implements AfterViewInit {
      };
      this.populateDescriptions();
   }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.searchThis();
+  }
+
+  searchThis() {
+    this.searchWord = this.searchWord.trim(); // Remove whitespace
+    this.searchWord = this.searchWord.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+    this.dataSource.filter = this.searchWord;
+}
   
 reset(row){
   if(this.currentRow !== row){

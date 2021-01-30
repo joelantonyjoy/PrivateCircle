@@ -1,5 +1,4 @@
-import { SelectionModel } from '@angular/cdk/collections';
-import {Component, ViewChild } from '@angular/core';
+import {AfterViewInit, Component,EventEmitter,Input,Output,ViewChild } from '@angular/core';
 
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
@@ -12,15 +11,11 @@ import {COLLECTED_DATA} from '../app/mockData/MockData';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  public dataSource = new MatTableDataSource(COLLECTED_DATA);
-  
+export class AppComponent{
+  public searchWord: string;
   @ViewChild(MatSort) sort: MatSort;
-  selectedDescriptions: String[];
-
-  searchThis(searchword) {
-    searchword = searchword.trim(); // Remove whitespace
-    searchword = searchword.toLowerCase(); // MatTableDataSource defaults to lowercase matches
-    this.dataSource.filter = searchword;
+  
+  searchThis(searchword: string) {
+    this.searchWord = searchword;
 }
 }

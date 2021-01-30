@@ -7,12 +7,12 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 
 export class HeaderMenuComponent implements OnInit {
-  @Output() searchcriteria = new EventEmitter<String>();
+  @Output() searchcriteria = new EventEmitter<string>();
   constructor() { }
 
   ngOnInit(): void {
   }
-  searchThis(searchword: String) {
+  searchThis(searchword: string) {
     this.searchcriteria.emit(searchword)
 }
   
