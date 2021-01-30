@@ -139,7 +139,7 @@ tr.mat-row, tr.mat-footer-row {
   color: black;
   text-align: left;
   font-weight: 200;
-  margin: 16px 16px 24px 20px;
+  margin: 18px 16px 30px 16px;
 }
 
 .description-header a{
@@ -154,8 +154,8 @@ tr.mat-row, tr.mat-footer-row {
   list-style: none;
 }
 
-.description-header + ul li{
-  color: #35577e;
-  margin-bottom: 8px;
+.description-item{
+  color: #4471a3;
+  margin-bottom: 16px;
 }
 
