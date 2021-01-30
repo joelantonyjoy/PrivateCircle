@@ -6,12 +6,15 @@ import { COLLECTED_DATA, DESCRIPTIONS } from '../mockData/MockData';
 })
 export class CollectionService {
 
-  public getCollections(){
- return this.populateDescriptions();
+  constructor() { }
+  
+  public getCollections() {
+    return this.populateDescriptions();
   }
-  populateDescriptions(){
+  
+  populateDescriptions() {
     for( var e of COLLECTED_DATA){
-    e.descriptions = this.shuffleArray(DESCRIPTIONS).slice(0,e.noOfEntities);
+      e.descriptions = this.shuffleArray(DESCRIPTIONS).slice(0, e.noOfEntities);
     }
     return COLLECTED_DATA;
   }
@@ -23,6 +26,4 @@ export class CollectionService {
     }
     return array;
   }
-
-  constructor() { }
 }
